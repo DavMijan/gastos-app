@@ -37,7 +37,6 @@ class TipoGastoController extends Controller
             'nombre' => 'required|string|max:255',
         ]);
 
-        // Buscar el último código generado
         $last = TipoGasto::orderBy('id', 'desc')->first();
 
         $nextNumber = 1;
@@ -82,8 +81,6 @@ class TipoGastoController extends Controller
         ]);
 
         $tipo = TipoGasto::findOrFail($id);
-
-        // No se permite cambiar el código porque es autogenerado
         $tipo->nombre = $request->nombre;
         $tipo->save();
 
@@ -91,7 +88,6 @@ class TipoGastoController extends Controller
             ->with('success', 'Tipo de gasto actualizado correctamente.');
     }
 
-    // Inactivar (equivalente a eliminar lógico)
     public function inactivar($id)
     {
         $tipo = TipoGasto::findOrFail($id);

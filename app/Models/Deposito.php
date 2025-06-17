@@ -17,19 +17,16 @@ class Deposito extends Model
         'status',
     ];
 
-    // Relación con el usuario que registró el depósito
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Relación con el fondo monetario
     public function fondo()
     {
         return $this->belongsTo(FondoMonetario::class, 'fondos_monetarios_id');
     }
 
-    // Accessor para mostrar estado como texto
     public function getEstadoTextoAttribute()
     {
         return $this->status === 1 ? 'Activo' : 'Anulado';

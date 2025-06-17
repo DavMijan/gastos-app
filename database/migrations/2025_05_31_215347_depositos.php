@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('fondos_monetarios_id')->constrained()->onDelete('cascade');
             $table->date('fecha');
             $table->decimal('monto', 12, 2);
-            $table->integer('status')->default(1); // 1: activo, 0: inactivo
+            $table->integer('status')->default(1); 
             $table->timestamps();
         });
     }

@@ -33,7 +33,6 @@ class PresupuestoController extends Controller
             'monto' => 'required|numeric|min:0',
         ]);
 
-        // Armar fecha completa
         $fechaMes = "{$request->anio}-{$request->mes}-01";
 
         $existe = Presupuesto::where('user_id', Auth::id())
@@ -88,7 +87,7 @@ class PresupuestoController extends Controller
     public function destroy(Presupuesto $presupuesto)
     {
         $presupuesto->update([
-            'status' => 'I', // o false, dependiendo cómo manejes estado
+            'status' => 'I', 
         ]);
 
         return redirect()->route('presupuestos.index');

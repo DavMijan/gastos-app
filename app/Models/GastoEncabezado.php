@@ -21,7 +21,6 @@ class GastoEncabezado extends Model
     ];
 
 
-    // Relaciones
     public function detalles()
     {
         return $this->hasMany(GastoDetalle::class, 'gasto_encabezado_id');

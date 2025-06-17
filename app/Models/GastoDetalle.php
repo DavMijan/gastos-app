@@ -18,7 +18,6 @@ class GastoDetalle extends Model
     ];
 
 
-    // Relaciones
     public function encabezado()
     {
         return $this->belongsTo(GastoEncabezado::class, 'gasto_encabezado_id');
@@ -30,6 +29,6 @@ class GastoDetalle extends Model
     }
         public function gastoEncabezado()
     {
-        return $this->belongsTo(GastoEncabezado::class, 'gasto_encabezado_id'); 
+        return $this->belongsTo(GastoEncabezado::class, 'gasto_encabezado_id');
     }
 }

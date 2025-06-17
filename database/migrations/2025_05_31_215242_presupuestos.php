@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('tipo_gasto_id')->constrained('tipos_gasto')->onDelete('cascade');
-            $table->date('mes'); // Usar como 2025-05-01, solo se usa el mes
+            $table->date('mes');
             $table->decimal('monto', 12, 2);
-            $table->integer('status')->default(1); // 1: activo, 0: inactivo
+            $table->integer('status')->default(1); 
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('gasto_encabezado_id')->constrained('gastos_encabezado')->onDelete('cascade');
             $table->foreignId('tipo_gasto_id')->constrained('tipos_gasto')->onDelete('cascade');
             $table->decimal('monto', 12, 2);
-            $table->integer('status')->default(1); // 1: activo, 0: inactivo
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('tipos_gasto', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo')->unique(); // Autogenerado, ej: TG001
+            $table->string('codigo')->unique();
             $table->string('nombre');
-            $table->integer('status')->default(1); // 1: activo, 0: inactivo
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

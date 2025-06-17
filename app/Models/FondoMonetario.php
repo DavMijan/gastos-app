@@ -14,7 +14,6 @@ class FondoMonetario extends Model
         'status',
     ];
 
-    // Opcional: Scope para activos
     public function scopeActive($query)
     {
         return $query->where('status', 1);

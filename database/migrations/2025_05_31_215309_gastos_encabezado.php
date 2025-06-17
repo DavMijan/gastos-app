@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('observaciones')->nullable();
             $table->string('nombre_comercio');
             $table->enum('tipo_documento', ['Factura', 'Comprobante', 'Otro']);
-            $table->integer('status')->default(1); // 1: activo, 0: inactivo
+            $table->integer('status')->default(1); 
             $table->timestamps();
         });
     }

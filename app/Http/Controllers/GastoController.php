@@ -17,18 +17,12 @@ class GastoController extends Controller
 {
     public function index()
     {
-        // Traemos fondos monetarios activos
         $fondos = FondoMonetario::where('status', 1)->get(['id', 'nombre']);
-
-        // Traemos tipos de gasto activos
         $tiposGasto = TipoGasto::where('status', 1)->get(['id', 'nombre']);
-
-        // Traemos gastos con detalles
         $gastos = GastoEncabezado::with(['detalles.tipoGasto'])
             ->orderBy('fecha', 'desc')
             ->get();
 
-        // Retornamos a Inertia con toda la info necesaria
         return Inertia::render('Movimientos/Gastos', [
             'fondos' => $fondos,
             'tiposGasto' => $tiposGasto,
@@ -53,7 +47,6 @@ class GastoController extends Controller
         $fecha = Carbon::parse($request->fecha);
         $mes = $fecha->format('Y-m-01');
 
-        // 1. Validar presupuestos sobregirados
         $sobregiros = [];
 
         foreach ($request->detalles as $detalle) {
@@ -85,8 +78,6 @@ class GastoController extends Controller
                 'detalles' => $sobregiros,
             ]);
         }
-
-        // 2. Guardar todo en transacción
         DB::beginTransaction();
 
         try {
@@ -120,11 +111,9 @@ class GastoController extends Controller
         DB::transaction(function () use ($id) {
             $gasto = GastoEncabezado::with('detalles')->findOrFail($id);
 
-            // Anula encabezado
             $gasto->status = 0;
             $gasto->save();
 
-            // Anula detalles
             foreach ($gasto->detalles as $detalle) {
                 $detalle->status = 0;
                 $detalle->save();

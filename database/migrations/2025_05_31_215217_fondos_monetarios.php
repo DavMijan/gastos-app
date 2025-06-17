@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->enum('tipo', ['Cuenta Bancaria', 'Caja Menuda']);
-            $table->integer('status')->default(1); // 1: activo, 0: inactivo
+            $table->integer('status')->default(1); 
             $table->timestamps();
         });
     }
